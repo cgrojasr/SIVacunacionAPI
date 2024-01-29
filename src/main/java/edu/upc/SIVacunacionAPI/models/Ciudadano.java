@@ -20,8 +20,8 @@ public class Ciudadano {
     @Column(name = "apellido_materno", nullable = false)
     private String apellidoMaterno;
     @ManyToOne
-    @Column(name = "id_documento_identidad", nullable = false)
-    private Integer idDocumentoIdentidad;
+    @JoinColumn(name = "id_documento_identidad")
+    private DocumentoIdentidad documentoIdentidad;
     @Column(name = "numero_documento_identidad", nullable = false)
     private String numeroDocumentoIdentidad;
     @Column(name = "activo", nullable = false)

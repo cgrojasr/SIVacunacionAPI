@@ -23,6 +23,6 @@ public class DocumentoIdentidad {
     public String nombre;
     @Column(name = "activo", nullable = false)
     public Boolean activo;
-    @OneToMany(mappedBy = "IdDocumentoIdentidad")
+    @OneToMany(mappedBy = "documentoIdentidad")
     private Set<Ciudadano> ciudadanos = new HashSet<>();
 }
