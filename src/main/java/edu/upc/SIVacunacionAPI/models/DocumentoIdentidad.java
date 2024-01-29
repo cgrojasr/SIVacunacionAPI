@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "documento_identidad")
 @Data
@@ -20,4 +23,6 @@ public class DocumentoIdentidad {
     public String nombre;
     @Column(name = "activo", nullable = false)
     public Boolean activo;
+    @OneToMany(mappedBy = "IdDocumentoIdentidad")
+    private Set<Ciudadano> ciudadanos = new HashSet<>();
 }
