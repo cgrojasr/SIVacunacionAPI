@@ -11,25 +11,21 @@ import java.util.Set;
 
 @Entity
 @Data
-@Table(name = "vacuna")
+@Table(name = "esquema")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Vacuna {
+public class Esquema {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_vacuna")
-    private Integer idVacuna;
-    @Column(name = "nombre", nullable = false)
-    private String nombre;
-    @Column(name = "dosis", nullable = false)
-    private Float dosis;
+    @Column(name = "id_esquema")
+    private Integer idEsquema;
+    @OneToOne
+    @JoinColumn(name = "id_ciudadano")
+    private Ciudadano ciudadano;
     @Column(name = "fecha_registro", nullable = false)
     private Date fechaRegistro;
     @Column(name = "activo", nullable = false)
     private Boolean activo;
-    @ManyToMany(mappedBy = "vacunas")
-    private Set<Enfermedad> enfermedades = new HashSet<>();
-    @OneToMany(mappedBy = "vacuna")
+    @OneToMany(mappedBy = "esquema")
     private Set<EsquemaDetalle> items = new HashSet<>();
-
 }

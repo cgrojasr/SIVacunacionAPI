@@ -17,7 +17,7 @@ import java.util.Set;
 public class DocumentoIdentidad {
     @Id
     @Column(name = "id_documento_identidad")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer idDocumentoIdentidad;
     @Column(name = "nombre", length = 100, nullable = false)
     public String nombre;
