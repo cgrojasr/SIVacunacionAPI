@@ -25,8 +25,8 @@ public class Enfermedad {
     @ManyToMany
     @JoinTable(
             name = "vacuna_enfermedad",
-            joinColumns = @JoinColumn(name = "id_enfermedad"),
-            inverseJoinColumns = @JoinColumn(name = "id_vacuna")
+            joinColumns = @JoinColumn(name = "id_enfermedad", foreignKey = @ForeignKey(name = "FK_ENFERMEDAD_VACUNA")),
+            inverseJoinColumns = @JoinColumn(name = "id_vacuna", foreignKey = @ForeignKey(name = "FK_VACUNA_ENFERMEDAD"))
     )
     private Set<Vacuna> vacunas;
     @OneToMany(mappedBy = "enfermedad")

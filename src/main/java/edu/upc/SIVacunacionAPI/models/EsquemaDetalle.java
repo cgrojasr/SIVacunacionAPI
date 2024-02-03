@@ -11,17 +11,16 @@ import java.util.Date;
 public class EsquemaDetalle {
     @Id
     @ManyToOne
-    @JoinColumn(name = "id_esquema")
+    @JoinColumn(name = "id_esquema", nullable = false)
     private Esquema esquema;
-    @Id
     @ManyToOne
     @JoinColumn(name = "id_vacuna")
     private Vacuna vacuna;
     @Id
     @ManyToOne
-    @JoinColumn(name = "id_enfermedad")
+    @JoinColumn(name = "id_enfermedad", nullable = false)
     private Enfermedad enfermedad;
-    @Column(name = "fecha_aplicacion", nullable = false)
+    @Column(name = "fecha_aplicacion")
     private Date fechaAplicacion;
     @ManyToOne
     @JoinColumn(name = "id_personal")
