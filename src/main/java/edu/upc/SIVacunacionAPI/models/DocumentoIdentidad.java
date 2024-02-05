@@ -1,17 +1,16 @@
 package edu.upc.SIVacunacionAPI.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "documento_identidad")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class DocumentoIdentidad {
@@ -23,6 +22,7 @@ public class DocumentoIdentidad {
     public String nombre;
     @Column(name = "activo", nullable = false)
     public Boolean activo;
+    @JsonIgnore
     @OneToMany(mappedBy = "documentoIdentidad")
     private Set<Ciudadano> ciudadanos = new HashSet<>();
 }

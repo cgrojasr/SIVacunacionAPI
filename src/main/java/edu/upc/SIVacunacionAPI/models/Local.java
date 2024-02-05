@@ -1,5 +1,6 @@
 package edu.upc.SIVacunacionAPI.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,6 +21,7 @@ public class Local {
     private Integer idLocal;
     @Column(name = "nombre", nullable = false)
     private String nombre;
+    @JsonIgnore
     @OneToMany(mappedBy = "local")
     private Set<EsquemaDetalle> items = new HashSet<>();
 }

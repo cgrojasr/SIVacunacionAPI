@@ -1,5 +1,6 @@
 package edu.upc.SIVacunacionAPI.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +27,7 @@ public class Esquema {
     private Date fechaRegistro;
     @Column(name = "activo", nullable = false)
     private Boolean activo;
+    @JsonIgnore
     @OneToMany(mappedBy = "esquema")
     private Set<EsquemaDetalle> items = new HashSet<>();
 }

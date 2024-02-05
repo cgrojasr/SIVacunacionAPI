@@ -1,17 +1,17 @@
 package edu.upc.SIVacunacionAPI.repository;
 
 import edu.upc.SIVacunacionAPI.models.Esquema;
-import edu.upc.SIVacunacionAPI.models.EsquemaPorUsuario;
+import edu.upc.SIVacunacionAPI.models.EsquemaPorCiudadano;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface EsquemaRepository extends CrudRepository<Esquema, Integer> {
-    @Query(value = "SELECT new edu.upc.SIVacunacionAPI.models.EsquemaPorUsuario(" +
+public interface EsquemaRepository extends JpaRepository<Esquema, Integer> {
+    @Query(value = "SELECT new edu.upc.SIVacunacionAPI.models.EsquemaPorCiudadano(" +
             "esq.idEsquema, det.enfermedad.idEnfermedad, enf.nombre, " +
             "det.vacuna.idVacuna, vac.nombre) " +
             "FROM Esquema AS esq " +
@@ -19,5 +19,5 @@ public interface EsquemaRepository extends CrudRepository<Esquema, Integer> {
             "LEFT JOIN Enfermedad AS enf ON enf.idEnfermedad = det.enfermedad.idEnfermedad " +
             "LEFT JOIN Vacuna AS vac ON vac.idVacuna = det.vacuna.idVacuna " +
             "WHERE esq.ciudadano.idCiudadano = :idCiudadano")
-    List<EsquemaPorUsuario> ObtenerEsquemaDelCiudadano(@Param("idCiudadano") int idCiudadano);
+    List<EsquemaPorCiudadano> ObtenerEsquemaDelCiudadano(@Param("idCiudadano") int idCiudadano);
 }

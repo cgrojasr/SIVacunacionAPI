@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class EsquemaServiceTest {
     @Autowired
-    EsquemaService service;
+    private EsquemaService service;
 
     @Test
     public void ObtenerEsquemaDelCiudadano(){

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class EsquemaPorUsuario {
+public class EsquemaPorCiudadano {
     @JsonProperty("id_esquema")
     private Integer idEsquema;
     @JsonProperty("id_enfermedad")

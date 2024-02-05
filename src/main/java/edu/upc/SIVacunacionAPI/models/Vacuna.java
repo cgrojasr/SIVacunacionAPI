@@ -1,5 +1,6 @@
 package edu.upc.SIVacunacionAPI.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,8 +28,10 @@ public class Vacuna {
     private Date fechaRegistro;
     @Column(name = "activo", nullable = false)
     private Boolean activo;
+    @JsonIgnore
     @ManyToMany(mappedBy = "vacunas")
     private Set<Enfermedad> enfermedades = new HashSet<>();
+    @JsonIgnore
     @OneToMany(mappedBy = "vacuna")
     private Set<EsquemaDetalle> items = new HashSet<>();
 

@@ -19,4 +19,12 @@ public class DocumentoIdentidadServiceTest {
         var IdDocumentoIdentidad = service.Registrar(objDocumentoIdentidad);
         Assertions.assertEquals(IdDocumentoIdentidad, 1);
     }
+
+    @Test
+    public void Actualizar(){
+        var objDocumentoIdentidad = service.BuscarPorId(1);
+        objDocumentoIdentidad.activo = false;
+        objDocumentoIdentidad = service.Actualizar(objDocumentoIdentidad);
+        Assertions.assertEquals(objDocumentoIdentidad.idDocumentoIdentidad, 1);
+    }
 }

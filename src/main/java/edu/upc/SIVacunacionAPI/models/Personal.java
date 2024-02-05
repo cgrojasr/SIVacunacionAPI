@@ -1,5 +1,6 @@
 package edu.upc.SIVacunacionAPI.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +25,7 @@ public class Personal {
     private String apellidos;
     @Column(name = "profesion")
     private String profesion;
+    @JsonIgnore
     @OneToMany(mappedBy = "personal")
     private Set<EsquemaDetalle> items = new HashSet<>();
 }

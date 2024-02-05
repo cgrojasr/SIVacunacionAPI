@@ -1,12 +1,16 @@
 package edu.upc.SIVacunacionAPI.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "esquema_detalle")
 public class EsquemaDetalle {
     @Id
