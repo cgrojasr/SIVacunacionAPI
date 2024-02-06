@@ -4,10 +4,7 @@ import edu.upc.SIVacunacionAPI.models.DocumentoIdentidad;
 import edu.upc.SIVacunacionAPI.services.DocumentoIdentidadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,7 +19,51 @@ public class DocumentoIdentidadController {
         try {
             return ResponseEntity.ok(service.ListarPorActivo(activo));
         } catch (Exception ex){
-            return ResponseEntity.badRequest().body(null);
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @GetMapping("/findbyid")
+    public ResponseEntity<DocumentoIdentidad> BuscarPorId(@RequestParam(value = "id") Integer idDocumentoIdentidad){
+        try{
+            return ResponseEntity.ok(service.BuscarPorId(idDocumentoIdentidad));
+        }
+        catch (Exception ex){
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/findall")
+    public ResponseEntity<List<DocumentoIdentidad>> ListarTodo(){
+        try{
+            return ResponseEntity.ok(service.ListarTodo());
+        }
+        catch (Exception ex){
+            return ResponseEntity.noContent().build();
+        }
+    }
+
+    @PutMapping
+    public ResponseEntity<DocumentoIdentidad> Actualizar(@RequestBody DocumentoIdentidad objDocumentoIdentidad){
+        try {
+            var respuesta = service.Actualizar(objDocumentoIdentidad);
+            if(respuesta != null)
+                return ResponseEntity.ok(respuesta);
+            else
+                throw new Exception();
+        }
+        catch (Exception ex) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PostMapping
+    public ResponseEntity<Integer> Registrar(@RequestBody DocumentoIdentidad objDocumentoIdentidad){
+        try {
+            return ResponseEntity.ok(service.Registrar(objDocumentoIdentidad));
+        }
+        catch (Exception ex) {
+            return ResponseEntity.badRequest().build();
         }
     }
 }
