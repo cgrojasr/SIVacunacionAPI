@@ -11,7 +11,10 @@ public class EsquemaService {
     @Autowired
     private EsquemaRepository repository;
 
-    public List<EsquemaPorCiudadano> ObtenerEsquemaDelCiudadano(int idCiudadano){
-        return repository.ObtenerEsquemaDelCiudadano(idCiudadano);
+    public List<EsquemaPorCiudadano> ObtenerEsquemaDelCiudadano(int idCiudadano, Boolean pendiente){
+        if(pendiente)
+            return repository.ObtenerEsquemaDelCiudadano_Pendiente(idCiudadano);
+        else
+            return repository.ObtenerEsquemaDelCiudadano(idCiudadano);
     }
 }

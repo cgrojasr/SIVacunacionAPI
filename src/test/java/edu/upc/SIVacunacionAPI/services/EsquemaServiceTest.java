@@ -12,7 +12,7 @@ public class EsquemaServiceTest {
 
     @Test
     public void ObtenerEsquemaDelCiudadano(){
-        var resultado = service.ObtenerEsquemaDelCiudadano(1);
+        var resultado = service.ObtenerEsquemaDelCiudadano(1, true);
         Assertions.assertEquals(resultado.size(), 3);
     }
 }

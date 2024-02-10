@@ -18,9 +18,10 @@ public class EsquemaController {
     private EsquemaService esquemaCabService;
 
     @GetMapping("listbycitizen")
-    public ResponseEntity<List<EsquemaPorCiudadano>> ObtenerEsquemaDelCiudadano(@RequestParam(value = "id")Integer idCiudadano){
+    public ResponseEntity<List<EsquemaPorCiudadano>> ObtenerEsquemaDelCiudadano(@RequestParam(value = "id")Integer idCiudadano,
+                                                                                @RequestParam(value = "pendiente", defaultValue = "false", required = false)Boolean pendiente){
         try{
-            return ResponseEntity.ok(esquemaCabService.ObtenerEsquemaDelCiudadano(idCiudadano));
+            return ResponseEntity.ok(esquemaCabService.ObtenerEsquemaDelCiudadano(idCiudadano, pendiente));
         }catch (Exception ex){
             return ResponseEntity.badRequest().body(null);
         }

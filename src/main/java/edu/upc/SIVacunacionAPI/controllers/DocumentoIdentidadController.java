@@ -66,4 +66,18 @@ public class DocumentoIdentidadController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @DeleteMapping
+    public ResponseEntity<Integer> Eliminar(Integer idDocumentoIdentidad){
+        try{
+            var respuesta = service.Eliminar(idDocumentoIdentidad);
+            if(respuesta >= 1)
+                return ResponseEntity.ok(service.Eliminar(idDocumentoIdentidad));
+            else
+                throw new Exception("No se pudo eliminar el documento de identidad");
+        }
+        catch (Exception ex){
+            return ResponseEntity.badRequest().build();
+        }
+    }
 }
